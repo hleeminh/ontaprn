@@ -7,7 +7,10 @@ import {
     TouchableOpacity
 } from 'react-native';
 import React from 'react';
-import {icons, images} from '../const'
+import {icons, images} from '../const';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { FontAwesome } from '@expo/vector-icons'; 
+
 const Welcome = (props) => {
     return (
         <View style={{
@@ -79,10 +82,18 @@ const Welcome = (props) => {
                         marginHorizontal: 40,
                         marginVertical: 10,
                         justifyContent: 'center',
-                        alignItems: 'center'
+                        alignItems: 'center',
+                        backgroundColor: 'white'
                     }}>
+                        <Ionicons name="md-checkmark-circle" style={{
+                            color: 'green',
+                            fontSize: 20,
+                            position: 'absolute',
+                            left: 10,
+                            
+                        }}/>
                         <Text style={{
-                            color: 'white',
+                            color: '#01aae5',
                             fontSize: 16
                         }}>Influencer</Text>
                     </TouchableOpacity>
