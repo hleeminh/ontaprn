@@ -1,3 +1,3 @@
 export default {
-    backgroundImage: require('../assets/bg2.jpg')
+    backgroundImage: require('../assets/bg1.jpg'),
 }

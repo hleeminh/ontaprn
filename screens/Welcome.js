@@ -6,12 +6,14 @@ import {
     ImageBackground,
     TouchableOpacity
 } from 'react-native';
-import React from 'react';
-import {icons, images} from '../const';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { FontAwesome } from '@expo/vector-icons'; 
+import React, {useState, useEffect} from 'react';
+import {icons, images, colors} from '../const';
+import { UIButton } from '../components';
+import { AntDesign } from '@expo/vector-icons';
 
 const Welcome = (props) => {
+    const names = ['Influencer', 'Business', 'Individual'];
+    const [accountType, setAccoutType] = useState('');
     return (
         <View style={{
             flex: 1,
@@ -49,7 +51,12 @@ const Welcome = (props) => {
                             HLEEM1NH.INC
                         </Text>
                         <View style={{ flex: 1 }} />
-                        <Image
+                        <AntDesign name="questioncircleo" style={{
+                            color: 'white',
+                            fontSize: 20,
+                            marginRight: 10
+                        }}/>
+                        {/* <Image
                             source={icons.iconQuestion}
                             style={{
                                 height: 22,
@@ -57,7 +64,7 @@ const Welcome = (props) => {
                                 tintColor: '#fff',
                                 marginRight: 10
                             }}
-                        />
+                        /> */}
                     </View>
                 </View>
                 <View style={{
@@ -74,34 +81,43 @@ const Welcome = (props) => {
                     flex: 4,
                     // backgroundColor: 'green'
                 }}>
-                    <TouchableOpacity style={{
-                        borderColor: 'white',
-                        borderWidth: 2,
-                        height: 50,
-                        borderRadius: 10,
-                        marginHorizontal: 40,
-                        marginVertical: 10,
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        backgroundColor: 'white'
-                    }}>
-                        <Ionicons name="md-checkmark-circle" style={{
-                            color: 'green',
-                            fontSize: 20,
-                            position: 'absolute',
-                            left: 10,
-                            
-                        }}/>
-                        <Text style={{
-                            color: '#01aae5',
-                            fontSize: 16
-                        }}>Influencer</Text>
-                    </TouchableOpacity>
+                    {names.map((name, index) => 
+                        <UIButton
+                            key={index}
+                            onPress={() => setAccoutType(name)} 
+                            titleButton = {name}
+                            isSelected = {accountType == name}
+                        />    
+                    )}
+                     
                 </View>
                 <View style={{
                     flex: 2,
-                    backgroundColor: 'purple'
-                }} />
+                    // backgroundColor: 'purple'
+                }}>
+                    <UIButton titleButton = 'Login'/>
+                    <Text style={{
+                        color: 'white',
+                        fontSize: 16,
+                        alignSelf: 'center',
+                        marginTop: 10
+                    }}>Create a new account ?</Text>
+                    <TouchableOpacity 
+                        style={{
+                            marginTop: 6,
+                        }}
+                        onPress = {() => {
+                            alert('press register')
+                        }}
+                    >
+                        <Text style={{
+                            color: 'white',
+                            fontSize: 16,
+                            alignSelf: 'center',
+                            textDecorationLine: 'underline'
+                        }}>Register</Text>
+                    </TouchableOpacity>
+                </View>
             </ImageBackground>
         </View>
     )
